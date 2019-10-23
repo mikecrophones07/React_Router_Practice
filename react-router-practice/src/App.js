@@ -1,26 +1,37 @@
 import React from 'react';
 import logo from './logo.svg';
+import CounterGroup from "./components/CounterGroup/CounterGroup"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <Router>
+        <div>
+          {/* A <Switch> looks through its children <Route>s and
+              renders the first one that matches the current URL. */}
+          <Switch>
+            <Route path="/counter-group">
+              <CounterGroup defaultCounter = {3}/>
+            </Route>
+            <Route path="/">
+            </Route>
+          </Switch>
+        </div>
+        <Link to="/counter-group">Counter Group</Link>
+        <Link to="/">Home</Link>
+      </Router>
       </header>
     </div>
   );
 }
+
 
 export default App;
